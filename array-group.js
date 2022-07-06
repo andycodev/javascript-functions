@@ -77,7 +77,7 @@ const formatoComidas = [
 	const groupByReduce = (list, group, key, value ) => {
 		const data = Array.from(
 			list.reduce((map, object) => {
-				console.log(object[key]);
+				/* console.log(object[key]); */
 				return map.set(object[group], Object.assign(
 					map.get(object[group]) || { [group]: object[group]},
 					{ [object[key]]: object[value] }
@@ -93,7 +93,8 @@ const formatoComidas = [
 				almuerzo: value.A,
 				precioAlmuerzo: findePrice(value.A, value.fecha),
 				cena: value.C,
-				precioCena: findePrice(value.C, value.fecha)
+				precioCena: findePrice(value.C, value.fecha),
+                totalDia: (findePrice(value.D, value.fecha)+ findePrice(value.A, value.fecha)+ findePrice(value.C, value.fecha)) //agregamos nuevo este key totalDia
 			 })
 		});
 	}
